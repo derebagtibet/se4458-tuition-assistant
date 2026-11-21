@@ -1,0 +1,61 @@
+{
+  "question": "What is my balance?",
+  "answer": "Your current total outstanding balance is **6,000.00 USD**.\n\nHere is the breakdown by term:\n- **2026-FALL**: 3,000.00 USD (Tuition: 3,000.00 USD | Paid: 0.00 USD)\n- **2027-SPRING**: 3,000.00 USD (Tuition: 3,000.00 USD | Paid: 0.00 USD)",
+  "trace": [
+    {
+      "kind": "user_question",
+      "text": "What is my balance?",
+      "studentNo": "S1001"
+    },
+    {
+      "kind": "llm_tool_selection",
+      "step": 1,
+      "calls": [
+        {
+          "tool": "get_my_tuition",
+          "args": {}
+        }
+      ]
+    },
+    {
+      "kind": "tool_call",
+      "tool": "get_my_tuition",
+      "path": "REST via API Gateway",
+      "input": {},
+      "request": {
+        "method": "GET",
+        "url": "http://localhost:8000/api/v1/banking/tuition/S1001"
+      },
+      "result": {
+        "studentNo": "S1001",
+        "scope": "OVERALL",
+        "term": null,
+        "currency": "USD",
+        "tuitionTotal": 6000.0,
+        "paidAmount": 0.0,
+        "balance": 6000.0,
+        "terms": [
+          {
+            "term": "2026-FALL",
+            "currency": "USD",
+            "tuitionTotal": 3000.0,
+            "paidAmount": 0.0,
+            "balance": 3000.0
+          },
+          {
+            "term": "2027-SPRING",
+            "currency": "USD",
+            "tuitionTotal": 3000.0,
+            "paidAmount": 0.0,
+            "balance": 3000.0
+          }
+        ]
+      },
+      "ms": 26
+    },
+    {
+      "kind": "final_answer",
+      "text": "Your current total outstanding balance is **6,000.00 USD**.\n\nHere is the breakdown by term:\n- **2026-FALL**: 3,000.00 USD (Tuition: 3,000.00 USD | Paid: 0.00 USD)\n- **2027-SPRING**: 3,000.00 USD (Tuition: 3,000.00 USD | Paid: 0.00 USD)"
+    }
+  ]
+}

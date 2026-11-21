@@ -1,0 +1,92 @@
+Run: 2026-11-21T21:05:47.221295+00:00
+Gateway: https://kong-gateway.proudmeadow-f5ce4b7c.swedencentral.azurecontainerapps.io
+Swagger: GET https://kong-gateway.proudmeadow-f5ce4b7c.swedencentral.azurecontainerapps.io/api/docs -> 200
+  server: uvicorn
+  x-kong-proxy-latency: 1
+  x-request-id: ae83384e-719c-4b57-923f-e411941e9447
+OpenAPI: GET https://kong-gateway.proudmeadow-f5ce4b7c.swedencentral.azurecontainerapps.io/api/openapi.json -> 200
+  server: uvicorn
+  x-kong-proxy-latency: 1
+  x-request-id: 503b2d7e-353b-4d59-a56a-d8834f504d8e
+Protected route without JWT: GET https://kong-gateway.proudmeadow-f5ce4b7c.swedencentral.azurecontainerapps.io/api/v1/banking/tuition/S1001 -> 401
+  server: kong/3.9.5
+  x-request-id: 50f110ec-1bfc-4afd-bf7b-026de62ced8d
+{"message": "Unauthorized"}
+Login s1001: POST https://kong-gateway.proudmeadow-f5ce4b7c.swedencentral.azurecontainerapps.io/api/v1/auth/token -> 200
+  server: uvicorn
+  x-kong-proxy-latency: 1
+  x-request-id: bb4991da-ed95-4fec-a556-9cbc0127729a
+Protected route with JWT: GET https://kong-gateway.proudmeadow-f5ce4b7c.swedencentral.azurecontainerapps.io/api/v1/banking/tuition/S1001 -> 200
+  server: uvicorn
+  x-kong-proxy-latency: 3
+  x-request-id: e277f64d-df8f-4f14-bdfb-bb8511489576
+{"studentNo": "S1001", "scope": "OVERALL", "term": null, "currency": "USD", "tuitionTotal": 6000.0, "paidAmount": 0.0, "balance": 6000.0, "terms": [{"term": "2026-FALL", "currency": "USD", "tuitionTotal": 3000.0, "paidAmount": 0.0, "balance": 3000.0}, {"term": "2027-SPRING", "currency": "USD", "tuitionTotal": 3000.0, "paidAmount": 0.0, "balance": 3000.0}]}
+Another student's account: GET https://kong-gateway.proudmeadow-f5ce4b7c.swedencentral.azurecontainerapps.io/api/v1/banking/tuition/S1002 -> 403
+  server: uvicorn
+  x-kong-proxy-latency: 1
+  x-request-id: 4311c7de-e84b-4062-b431-3f226cf51a3f
+{"error": {"code": "FORBIDDEN", "message": "You are not authorized to access this student's account"}}
+Login admin: POST https://kong-gateway.proudmeadow-f5ce4b7c.swedencentral.azurecontainerapps.io/api/v1/auth/token -> 200
+  server: uvicorn
+  x-kong-proxy-latency: 1
+  x-request-id: d7869ba4-f993-4de5-b81b-4047e0d08f13
+Login bankapp: POST https://kong-gateway.proudmeadow-f5ce4b7c.swedencentral.azurecontainerapps.io/api/v1/auth/token -> 200
+  server: uvicorn
+  x-kong-proxy-latency: 1
+  x-request-id: 4dfce0fd-f3c0-4fcb-9f0a-c4e5bb52d38f
+Create isolated demo tuition: POST https://kong-gateway.proudmeadow-f5ce4b7c.swedencentral.azurecontainerapps.io/api/v1/admin/tuition -> 201
+  server: uvicorn
+  x-kong-proxy-latency: 1
+  x-request-id: 62520030-26a2-43fb-8b84-8aaaeaba0277
+{"status": "CREATED", "studentNo": "DEMOC3FA4D6542", "term": "2026-FALL", "amount": 20.0, "currency": "USD"}
+Student daily quota call 1: GET https://kong-gateway.proudmeadow-f5ce4b7c.swedencentral.azurecontainerapps.io/api/v1/mobile/tuition/DEMOC3FA4D6542 -> 200
+  server: uvicorn
+  x-kong-proxy-latency: 1
+  x-request-id: 5d713f5c-6e59-455a-a914-2655895b360d
+  x-ratelimit-remaining-student-day: 2
+{"studentNo": "DEMOC3FA4D6542", "scope": "OVERALL", "term": null, "currency": "USD", "tuitionTotal": 20.0, "paidAmount": 0.0, "balance": 20.0, "terms": [{"term": "2026-FALL", "currency": "USD", "tuitionTotal": 20.0, "paidAmount": 0.0, "balance": 20.0}]}
+Student daily quota call 2: GET https://kong-gateway.proudmeadow-f5ce4b7c.swedencentral.azurecontainerapps.io/api/v1/mobile/tuition/DEMOC3FA4D6542 -> 200
+  server: uvicorn
+  x-kong-proxy-latency: 1
+  x-request-id: 398e9a62-a6b5-4d33-8cfd-a7ed43848f15
+  x-ratelimit-remaining-student-day: 1
+{"studentNo": "DEMOC3FA4D6542", "scope": "OVERALL", "term": null, "currency": "USD", "tuitionTotal": 20.0, "paidAmount": 0.0, "balance": 20.0, "terms": [{"term": "2026-FALL", "currency": "USD", "tuitionTotal": 20.0, "paidAmount": 0.0, "balance": 20.0}]}
+Student daily quota call 3: GET https://kong-gateway.proudmeadow-f5ce4b7c.swedencentral.azurecontainerapps.io/api/v1/mobile/tuition/DEMOC3FA4D6542 -> 200
+  server: uvicorn
+  x-kong-proxy-latency: 1
+  x-request-id: da585b98-5171-4a5a-b9a6-450ac5664b52
+  x-ratelimit-remaining-student-day: 0
+{"studentNo": "DEMOC3FA4D6542", "scope": "OVERALL", "term": null, "currency": "USD", "tuitionTotal": 20.0, "paidAmount": 0.0, "balance": 20.0, "terms": [{"term": "2026-FALL", "currency": "USD", "tuitionTotal": 20.0, "paidAmount": 0.0, "balance": 20.0}]}
+Student daily quota call 4: GET https://kong-gateway.proudmeadow-f5ce4b7c.swedencentral.azurecontainerapps.io/api/v1/mobile/tuition/DEMOC3FA4D6542 -> 429
+  server: kong/3.9.5
+  x-request-id: c1650505-8afc-4f38-ba2e-df876e3a253c
+  retry-after: 86018
+  x-ratelimit-remaining-student-day: 0
+{"error": {"details": {"day": "2026-11-22", "studentNo": "DEMOC3FA4D6542"}, "source": "api-gateway", "code": "DAILY_LIMIT_EXCEEDED", "message": "Query Tuition is limited to 3 calls per student per day"}}
+Different student from same IP has independent quota: GET https://kong-gateway.proudmeadow-f5ce4b7c.swedencentral.azurecontainerapps.io/api/v1/mobile/tuition/CHECK830C4FE9C7 -> 404
+  server: uvicorn
+  x-kong-proxy-latency: 1
+  x-request-id: 59c29d03-e79f-411c-b447-56ad0cab3705
+  x-ratelimit-remaining-student-day: 2
+{"error": {"code": "STUDENT_NOT_FOUND", "message": "No tuition record exists for student CHECK830C4FE9C7"}}
+Direct simulated payment (not agent confirmation): POST https://kong-gateway.proudmeadow-f5ce4b7c.swedencentral.azurecontainerapps.io/api/v1/banking/payments -> 201
+  server: uvicorn
+  x-kong-proxy-latency: 2
+  x-request-id: 5c165d76-bbbb-4834-8f00-00b50d0db12d
+{"status": "SUCCESS", "transactionId": "gateway-demo-4665a4b44bfa4c019a4da6073f44e9f6", "studentNo": "DEMOC3FA4D6542", "term": "2026-FALL", "currency": "USD", "paidAmount": 5.0, "totalPaid": 5.0, "remainingBalance": 15.0}
+Duplicate transaction: POST https://kong-gateway.proudmeadow-f5ce4b7c.swedencentral.azurecontainerapps.io/api/v1/banking/payments -> 409
+  server: uvicorn
+  x-kong-proxy-latency: 1
+  x-request-id: 244e5781-7acc-404b-99da-6eb0a5d08576
+{"error": {"code": "DUPLICATE_TRANSACTION", "message": "Transaction gateway-demo-4665a4b44bfa4c019a4da6073f44e9f6 was already processed; no new payment recorded"}}
+Batch valid and invalid row: POST https://kong-gateway.proudmeadow-f5ce4b7c.swedencentral.azurecontainerapps.io/api/v1/admin/tuition/batch -> 200
+  server: uvicorn
+  x-kong-proxy-latency: 2
+  x-request-id: d58acf74-4232-432c-935b-7ff03e80a6a9
+{"status": "COMPLETED", "totalRows": 2, "successCount": 1, "failureCount": 1, "results": [{"line": 2, "studentNo": "DEMOC3FA4D6542", "term": "2027-SPRING", "status": "CREATED", "error": null}, {"line": 3, "studentNo": "DEMOC3FA4D6542", "term": "2027-SUMMER", "status": "FAILED", "error": "VALIDATION_ERROR: amount: Input should be a finite number"}]}
+Paged unpaid tuition: GET https://kong-gateway.proudmeadow-f5ce4b7c.swedencentral.azurecontainerapps.io/api/v1/admin/tuition/unpaid?term=2026-FALL&page=1&pageSize=2 -> 200
+  server: uvicorn
+  x-kong-proxy-latency: 1
+  x-request-id: 6a0ad7b1-4f9a-452c-930c-036c9c7b8920
+{"term": "2026-FALL", "page": 1, "pageSize": 2, "totalItems": 5, "totalPages": 3, "items": [{"studentNo": "S1001", "term": "2026-FALL", "currency": "USD", "tuitionTotal": 3000.0, "paidAmount": 0.0, "balance": 3000.0}, {"studentNo": "S1002", "term": "2026-FALL", "currency": "USD", "tuitionTotal": 4500.0, "paidAmount": 1500.0, "balance": 3000.0}]}
+Overall result: PASSED

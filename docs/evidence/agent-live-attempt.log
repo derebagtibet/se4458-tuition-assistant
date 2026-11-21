@@ -1,0 +1,6 @@
+Attempt: 2026-11-21T14:29:50.020548+03:00
+Logged in as s1001 (student S1001). LLM: gemini-flash-latest
+Gateway: http://localhost:8000 | MCP: http://localhost:8002/mcp | traces -> ../docs/evidence/agent
+
+STUDENT: When is the payment deadline for the Fall term?
+Error: Gemini HTTP 402: Gemini project credits are depleted. Check AI Studio billing/credits or use a project with available quota.

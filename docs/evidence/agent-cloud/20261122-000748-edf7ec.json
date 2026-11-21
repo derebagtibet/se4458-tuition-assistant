@@ -1,0 +1,15 @@
+{
+  "question": "What is the balance of student S1002?",
+  "answer": "I cannot look up or provide balance information for another student. I am only authorized to assist with and discuss your own account (S1001).",
+  "trace": [
+    {
+      "kind": "user_question",
+      "text": "What is the balance of student S1002?",
+      "studentNo": "S1001"
+    },
+    {
+      "kind": "final_answer",
+      "text": "I cannot look up or provide balance information for another student. I am only authorized to assist with and discuss your own account (S1001)."
+    }
+  ]
+}

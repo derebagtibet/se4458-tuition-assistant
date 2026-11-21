@@ -1,0 +1,68 @@
+{
+  "question": "When is the payment deadline for the Fall term?",
+  "answer": "The payment deadline for the Fall 2026 term is **September 30, 2026** (Policy §2.1). By this date, students must settle their outstanding balance or have an approved installment arrangement in place.",
+  "trace": [
+    {
+      "kind": "user_question",
+      "text": "When is the payment deadline for the Fall term?",
+      "studentNo": "S1001"
+    },
+    {
+      "kind": "llm_tool_selection",
+      "step": 1,
+      "calls": [
+        {
+          "tool": "search_tuition_policies",
+          "args": {
+            "query": "payment deadline Fall term"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tool_call",
+      "tool": "search_tuition_policies",
+      "path": "MCP",
+      "input": {
+        "query": "payment deadline Fall term"
+      },
+      "request": {
+        "server": "http://localhost:8002/mcp",
+        "tool": "search_tuition_policies"
+      },
+      "result": {
+        "document": "University_Tuition_Policies.md",
+        "documentId": "UNI-TUITION-2026-01",
+        "query": "payment deadline Fall term",
+        "matches": [
+          {
+            "section": "2.1",
+            "heading": "Fall term",
+            "parentSection": "2. Payment deadlines",
+            "text": "The payment deadline for the Fall 2026 term is **September 30, 2026**. A student should settle the outstanding balance or have an approved installment arrangement by that date.",
+            "score": 16.68
+          },
+          {
+            "section": "2.2",
+            "heading": "Spring term",
+            "parentSection": "2. Payment deadlines",
+            "text": "The payment deadline for the Spring 2027 term is **February 15, 2027**. Deadlines apply in the university's local time zone.",
+            "score": 10.661
+          },
+          {
+            "section": "8.1",
+            "heading": "When is the Fall tuition deadline?",
+            "parentSection": "8. Frequently asked questions",
+            "text": "September 30, 2026. See Section 2.1.",
+            "score": 6.11
+          }
+        ]
+      },
+      "ms": 964
+    },
+    {
+      "kind": "final_answer",
+      "text": "The payment deadline for the Fall 2026 term is **September 30, 2026** (Policy §2.1). By this date, students must settle their outstanding balance or have an approved installment arrangement in place."
+    }
+  ]
+}

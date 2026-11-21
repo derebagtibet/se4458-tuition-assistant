@@ -1,0 +1,64 @@
+{
+  "question": "Pay 500 dollars of my 2026-FALL balance.",
+  "answer": "Your payment has been successfully processed.\n\n**Payment Summary:**\n- **Term:** 2026-FALL\n- **Amount Paid:** $500.00 USD\n- **Remaining Balance:** $2,500.00 USD\n- **Transaction ID:** `agent-f4cf7dba58524934a405`\n\n*Please note: Submitting a partial payment does not constitute enrollment in or approval for an official installment plan (Policy §3.4).*",
+  "trace": [
+    {
+      "kind": "user_question",
+      "text": "Pay 500 dollars of my 2026-FALL balance.",
+      "studentNo": "S1001"
+    },
+    {
+      "kind": "llm_tool_selection",
+      "step": 1,
+      "calls": [
+        {
+          "tool": "pay_tuition",
+          "args": {
+            "term": "2026-FALL",
+            "amount": 500
+          }
+        }
+      ]
+    },
+    {
+      "kind": "payment_confirmation",
+      "summary": {
+        "studentNo": "S1001",
+        "term": "2026-FALL",
+        "amount": "500.00",
+        "currency": "USD",
+        "currentBalance": "3000.00",
+        "balanceAfterPayment": "2500.00"
+      },
+      "confirmed": true
+    },
+    {
+      "kind": "tool_call",
+      "tool": "pay_tuition",
+      "path": "REST via API Gateway",
+      "input": {
+        "term": "2026-FALL",
+        "amount": 500
+      },
+      "request": {
+        "method": "POST",
+        "url": "http://localhost:8000/api/v1/banking/payments"
+      },
+      "result": {
+        "status": "SUCCESS",
+        "transactionId": "agent-f4cf7dba58524934a405",
+        "studentNo": "S1001",
+        "term": "2026-FALL",
+        "currency": "USD",
+        "paidAmount": 500.0,
+        "totalPaid": 500.0,
+        "remainingBalance": 2500.0
+      },
+      "ms": 73348
+    },
+    {
+      "kind": "final_answer",
+      "text": "Your payment has been successfully processed.\n\n**Payment Summary:**\n- **Term:** 2026-FALL\n- **Amount Paid:** $500.00 USD\n- **Remaining Balance:** $2,500.00 USD\n- **Transaction ID:** `agent-f4cf7dba58524934a405`\n\n*Please note: Submitting a partial payment does not constitute enrollment in or approval for an official installment plan (Policy §3.4).*"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+.env
+__pycache__/
+*.pyc
+.pytest_cache/
+.pytest-tmp*/
+.test-tmp/
+traces/
+.venv/
+deploy/azure/.deploy-state
+deploy/azure/*.log

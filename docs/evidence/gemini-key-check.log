@@ -1,0 +1,6 @@
+Run: 2026-11-21T15:43:48.752425+03:00
+Model: gemini-3.8-flash
+Result: SUCCESS
+Response: OK
+Working key and model saved to ignored local .env; key excluded from this log.
+Provider rejected gemini-flash-latest and restricted gemini-2.5-flash for new users; its recommended gemini-3.8-flash was used.

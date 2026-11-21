@@ -1,0 +1,23 @@
+{
+  "name": "search_tuition_policies",
+  "description": "Search the university tuition POLICY document (general rules only, not student account data).\n\nUse for questions about payment deadlines, installment eligibility and schedule, late fees,\nscholarships, refunds/withdrawals, payment posting time, and payment/banking rules.\n\nArgs:\n    query: natural-language search text, e.g. \"installment eligibility\" or \"fall payment deadline\".\n    top_k: number of excerpts to return (1-5).\nReturns:\n    {\"document\", \"documentId\", \"query\", \"matches\": [{\"section\", \"heading\", \"parentSection\", \"text\", \"score\"}]}\n",
+  "inputSchema": {
+    "properties": {
+      "query": {
+        "title": "Query",
+        "type": "string"
+      },
+      "top_k": {
+        "default": 3,
+        "title": "Top K",
+        "type": "integer"
+      }
+    },
+    "required": [
+      "query"
+    ],
+    "title": "search_tuition_policiesArguments",
+    "type": "object"
+  },
+  "outputSchema": null
+}

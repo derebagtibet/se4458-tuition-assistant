@@ -1,0 +1,23 @@
+Connected to MCP server 'tuition-policies' at https://mcp-server.proudmeadow-f5ce4b7c.swedencentral.azurecontainerapps.io/mcp
+
+TOOL search_tuition_policies
+  inputSchema: {"properties": {"query": {"title": "Query", "type": "string"}, "top_k": {"default": 3, "title": "Top K", "type": "integer"}}, "required": ["query"], "title": "search_tuition_policiesArguments", "type": "object"}
+
+--- Retrieval test 1: 'When is the Fall payment deadline?'
+  §2.1 Fall term  (score 11.254)
+    The payment deadline for the Fall 2026 term is **September 30, 2026**. A student should settle the outstanding balance or have an approved installment arrangeme
+  §8.1 When is the Fall tuition deadline?  (score 6.11)
+    September 30, 2026. See Section 2.1.
+
+--- Retrieval test 2: 'Can I pay my outstanding balance in installments?'
+  §8.2 Can I pay my balance in three installments?  (score 8.381)
+    The policy permits up to three installments for eligible balances, subject to approval. Check the live balance through the Tuition Query API and see Sections 3.
+  §3.4 Partial payments versus installment approval  (score 8.068)
+    The payment API can record a partial payment and retain the remaining balance. **A partial payment is not, by itself, approval of an installment plan.** The AI 
+
+--- Retrieval test 3: 'What is the late fee if I pay after the due date?'
+  §4.1 Late fee rule  (score 22.655)
+    A **2% one-time late fee** may be assessed on an overdue amount after the applicable due date, unless an approved exception applies. This document describes the
+  §4.2 Example  (score 12.253)
+    If $1,000 is overdue and no exception applies, the illustrative late fee is $20. Whether a fee has actually been posted must be checked in the tuition system.
+

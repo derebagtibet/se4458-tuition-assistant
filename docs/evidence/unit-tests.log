@@ -1,0 +1,119 @@
+Run: 2026-11-21T11:30:36.361809+00:00
+Python: 3.13.12
+
+================ services/tuition_api ================
+============================= test session starts =============================
+platform win32 -- Python 3.13.12, pytest-9.2.0, pluggy-1.7.0 -- C:\Users\dereb\Desktop\se4458-tuition-assistant\se4458-tuition-assistant\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\dereb\Desktop\se4458-tuition-assistant\se4458-tuition-assistant\services\tuition_api
+plugins: anyio-4.16.0
+collecting ... collected 42 items
+
+tests/test_api.py::test_login_success_returns_jwt_with_role PASSED       [  2%]
+tests/test_api.py::test_login_wrong_password_401 PASSED                  [  4%]
+tests/test_api.py::test_mobile_query_overall_balance PASSED              [  7%]
+tests/test_api.py::test_mobile_query_term_scope_and_case_insensitive_student PASSED [  9%]
+tests/test_api.py::test_mobile_query_limit_three_per_student_per_day PASSED [ 11%]
+tests/test_api.py::test_mobile_query_unknown_student_404 PASSED          [ 14%]
+tests/test_api.py::test_mobile_query_invalid_term_422 PASSED             [ 16%]
+tests/test_api.py::test_banking_query_own_account PASSED                 [ 19%]
+tests/test_api.py::test_banking_query_requires_auth PASSED               [ 21%]
+tests/test_api.py::test_banking_query_other_students_account_forbidden PASSED [ 23%]
+tests/test_api.py::test_banking_query_expired_token_401 PASSED           [ 26%]
+tests/test_api.py::test_banking_query_bank_role_any_student PASSED       [ 28%]
+tests/test_api.py::test_pay_partial_then_full PASSED                     [ 30%]
+tests/test_api.py::test_pay_duplicate_transaction_rejected_and_balance_preserved PASSED [ 33%]
+tests/test_api.py::test_pay_amount_exceeding_balance_rejected PASSED     [ 35%]
+tests/test_api.py::test_pay_non_positive_amount_rejected PASSED          [ 38%]
+tests/test_api.py::test_pay_more_than_two_decimals_rejected PASSED       [ 40%]
+tests/test_api.py::test_pay_for_another_student_forbidden PASSED         [ 42%]
+tests/test_api.py::test_pay_unknown_term_404 PASSED                      [ 45%]
+tests/test_api.py::test_admin_cannot_pay PASSED                          [ 47%]
+tests/test_api.py::test_add_tuition_create_update_unchanged PASSED       [ 50%]
+tests/test_api.py::test_add_tuition_below_paid_amount_conflict PASSED    [ 52%]
+tests/test_api.py::test_add_tuition_currency_mismatch_conflict PASSED    [ 54%]
+tests/test_api.py::test_add_tuition_requires_admin PASSED                [ 57%]
+tests/test_api.py::test_add_tuition_negative_amount_422 PASSED           [ 59%]
+tests/test_api.py::test_batch_reports_success_and_failure_counts PASSED  [ 61%]
+tests/test_api.py::test_batch_rejects_wrong_header PASSED                [ 64%]
+tests/test_api.py::test_batch_requires_auth PASSED                       [ 66%]
+tests/test_api.py::test_batch_invalid_row_does_not_crash_or_discard_valid_rows[S3002,2026-FALL,NaN,USD] PASSED [ 69%]
+tests/test_api.py::test_batch_invalid_row_does_not_crash_or_discard_valid_rows[S3002,2026-FALL,sNaN,USD] PASSED [ 71%]
+tests/test_api.py::test_batch_invalid_row_does_not_crash_or_discard_valid_rows[S3002,2026-FALL,Infinity,USD] PASSED [ 73%]
+tests/test_api.py::test_batch_invalid_row_does_not_crash_or_discard_valid_rows[S3002,2026-FALL,-Infinity,USD] PASSED [ 76%]
+tests/test_api.py::test_batch_invalid_row_does_not_crash_or_discard_valid_rows[S3002,2026-FALL,10000000000.00,USD] PASSED [ 78%]
+tests/test_api.py::test_batch_invalid_row_does_not_crash_or_discard_valid_rows[S3002,2026-FALL,10.001,USD] PASSED [ 80%]
+tests/test_api.py::test_batch_invalid_row_does_not_crash_or_discard_valid_rows[S3002,2026-FALL,100,USD,unexpected] PASSED [ 83%]
+tests/test_api.py::test_batch_invalid_row_does_not_crash_or_discard_valid_rows[S3002,2026-FALL,100] PASSED [ 85%]
+tests/test_api.py::test_batch_malformed_csv_is_rejected_before_writing PASSED [ 88%]
+tests/test_api.py::test_duplicate_transaction_does_not_reveal_another_students_payment PASSED [ 90%]
+tests/test_api.py::test_unpaid_paging PASSED                             [ 92%]
+tests/test_api.py::test_unpaid_page_out_of_range_is_empty PASSED         [ 95%]
+tests/test_api.py::test_unpaid_invalid_page_size_422 PASSED              [ 97%]
+tests/test_api.py::test_unpaid_requires_admin PASSED                     [100%]
+
+============================= 42 passed in 30.56s =============================
+
+================ services/mcp_server ================
+============================= test session starts =============================
+platform win32 -- Python 3.13.12, pytest-9.2.0, pluggy-1.7.0 -- C:\Users\dereb\Desktop\se4458-tuition-assistant\se4458-tuition-assistant\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\dereb\Desktop\se4458-tuition-assistant\se4458-tuition-assistant\services\mcp_server
+plugins: anyio-4.16.0
+collecting ... collected 11 items
+
+tests/test_policy_search.py::test_chunking_one_chunk_per_subsection PASSED [  9%]
+tests/test_policy_search.py::test_tokenizer_stems_and_drops_stopwords PASSED [ 18%]
+tests/test_policy_search.py::test_retrieval_payment_deadline PASSED      [ 27%]
+tests/test_policy_search.py::test_retrieval_installments PASSED          [ 36%]
+tests/test_policy_search.py::test_retrieval_late_fee PASSED              [ 45%]
+tests/test_policy_search.py::test_retrieval_refund PASSED                [ 54%]
+tests/test_policy_search.py::test_retrieval_payment_posting_via_synonym PASSED [ 63%]
+tests/test_policy_search.py::test_irrelevant_query_returns_nothing PASSED [ 72%]
+tests/test_policy_search.py::test_index_persisted_and_reloaded_without_reindexing PASSED [ 81%]
+tests/test_policy_search.py::test_split_handles_text_before_first_subsection PASSED [ 90%]
+tests/test_policy_search.py::test_mcp_tool_registered_and_returns_section_references PASSED [100%]
+
+============================= 11 passed in 1.03s ==============================
+
+================ agent ================
+============================= test session starts =============================
+platform win32 -- Python 3.13.12, pytest-9.2.0, pluggy-1.7.0 -- C:\Users\dereb\Desktop\se4458-tuition-assistant\se4458-tuition-assistant\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\dereb\Desktop\se4458-tuition-assistant\se4458-tuition-assistant\agent
+plugins: anyio-4.16.0
+collecting ... collected 29 items
+
+tests/test_agent.py::test_tools_exposed_to_llm_have_no_student_number_parameter PASSED [  3%]
+tests/test_agent.py::test_mcp_only_question PASSED                       [  6%]
+tests/test_agent.py::test_rest_only_question_uses_session_identity PASSED [ 10%]
+tests/test_agent.py::test_combined_mcp_and_rest PASSED                   [ 13%]
+tests/test_agent.py::test_prompt_supplied_student_number_is_ignored PASSED [ 17%]
+tests/test_agent.py::test_payment_requires_confirmation_and_is_not_sent_when_declined PASSED [ 20%]
+tests/test_agent.py::test_confirmed_payment_posts_once_with_idempotency_key PASSED [ 24%]
+tests/test_agent.py::test_async_confirm_callback_supported PASSED        [ 27%]
+tests/test_agent.py::test_payment_above_balance_is_not_confirmed_or_sent PASSED [ 31%]
+tests/test_agent.py::test_invalid_amount_rejected_without_backend_call PASSED [ 34%]
+tests/test_agent.py::test_invalid_payment_amount_is_never_rounded_confirmed_or_sent[10.001] PASSED [ 37%]
+tests/test_agent.py::test_invalid_payment_amount_is_never_rounded_confirmed_or_sent[NaN] PASSED [ 41%]
+tests/test_agent.py::test_invalid_payment_amount_is_never_rounded_confirmed_or_sent[sNaN] PASSED [ 44%]
+tests/test_agent.py::test_invalid_payment_amount_is_never_rounded_confirmed_or_sent[Infinity] PASSED [ 48%]
+tests/test_agent.py::test_invalid_payment_amount_is_never_rounded_confirmed_or_sent[-Infinity] PASSED [ 51%]
+tests/test_agent.py::test_invalid_payment_amount_is_never_rounded_confirmed_or_sent[10000000000] PASSED [ 55%]
+tests/test_agent.py::test_payment_requires_valid_term_before_backend_lookup[] PASSED [ 58%]
+tests/test_agent.py::test_payment_requires_valid_term_before_backend_lookup[fall] PASSED [ 62%]
+tests/test_agent.py::test_payment_requires_valid_term_before_backend_lookup[2026-WINTER] PASSED [ 65%]
+tests/test_agent.py::test_step_limit_stops_runaway_tool_loops PASSED     [ 68%]
+tests/test_agent.py::test_trace_written_to_disk PASSED                   [ 72%]
+tests/test_agent.py::test_gateway_error_is_passed_to_llm PASSED          [ 75%]
+tests/test_gemini_adapter.py::test_gemini_session_function_calling_roundtrip PASSED [ 79%]
+tests/test_gemini_adapter.py::test_provider_errors_explain_next_step_without_leaking_request_details[402-credits are depleted] PASSED [ 82%]
+tests/test_gemini_adapter.py::test_provider_errors_explain_next_step_without_leaking_request_details[429-quota/rate limit] PASSED [ 86%]
+tests/test_gemini_adapter.py::test_provider_errors_explain_next_step_without_leaking_request_details[401-API key] PASSED [ 89%]
+tests/test_gemini_adapter.py::test_provider_errors_explain_next_step_without_leaking_request_details[403-permissions] PASSED [ 93%]
+tests/test_gemini_adapter.py::test_provider_errors_explain_next_step_without_leaking_request_details[404-model not found] PASSED [ 96%]
+tests/test_gemini_adapter.py::test_provider_errors_explain_next_step_without_leaking_request_details[503-Try again later] PASSED [100%]
+
+============================= 29 passed in 0.83s ==============================
+
+Overall result: PASSED
