@@ -1,6 +1,6 @@
 # SE 4458 Midterm 1 — AI Tuition Assistant (Group 1)
 
-**Student:** Tibet Derebağ (Student No: `23070006024`)  ·  **Course:** SE 4458 Software Architecture & Design of Modern Large Scale Systems
+**Student:** Tibet Derebağ (Student No: `23070006024`)  ·  **Repository:** https://github.com/derebagtibet/se4458-tuition-assistant  ·  **Demo video:** https://www.youtube.com/watch?v=_DnmhyPsTmE  ·  **Course:** SE 4458 Software Architecture & Design of Modern Large Scale Systems
 
 An integrated system with the four mandatory components:
 
@@ -19,7 +19,7 @@ An integrated system with the four mandatory components:
 
 **Cloud evidence:** the full gateway check (`Overall result: PASSED`), three MCP retrieval queries and the agent demo (including a confirmed payment) were re-run against the Azure URLs: [`cloud-gateway-demo.log`](docs/evidence/cloud-gateway-demo.log), [`cloud-mcp-retrieval-demo.log`](docs/evidence/cloud-mcp-retrieval-demo.log), [`cloud-agent-demo.log`](docs/evidence/cloud-agent-demo.log), and the combined MCP + REST scenario in a fresh session: [`cloud-agent-combined.log`](docs/evidence/cloud-agent-combined.log).
 
-**Remaining before submission:** the video link and GitHub publication. This source folder currently has no Git repository metadata. See the [remaining-work roadmap](docs/YOL_HARITASI.md).
+**Demo video (9.5 min):** https://www.youtube.com/watch?v=_DnmhyPsTmE: architecture, Swagger, gateway checks (401/200/403/429/409), three MCP retrieval tests, the three agent scenarios, a confirmed simulated payment, the authorization guard and the unit-test run, all against the Azure deployment.
 
 ---
 
@@ -369,7 +369,7 @@ Against the deployed Azure stack, from Git Bash in the project root: `bash scrip
 
 ## 12. Evidence checklist
 
-Logs and their verification status are in [`docs/evidence/README.md`](docs/evidence/README.md). **Video: pending (no link yet).** Three live-LLM read scenarios and the student-confirmed simulated payment have been verified.
+Logs and their verification status are in [`docs/evidence/README.md`](docs/evidence/README.md). **Video:** https://www.youtube.com/watch?v=_DnmhyPsTmE. Three live-LLM read scenarios and the student-confirmed simulated payment have been verified.
 
 - [x] Agent scenario 1: MCP-only (real Gemini + MCP; trace + answer)
 - [x] Agent scenario 2: REST-only (real Gemini + gateway + PostgreSQL)
@@ -380,5 +380,5 @@ Logs and their verification status are in [`docs/evidence/README.md`](docs/evide
 - [x] Unit test run (82 tests, no live LLM)
 - [x] Swagger UI through the gateway (HTTP 200, local and Azure)
 - [x] Cloud deployment and actual Gateway/Swagger/MCP URLs (see [§9](#9-cloud-deployment-azure)); agent demo against the cloud: [`cloud-agent-demo.log`](docs/evidence/cloud-agent-demo.log)
-- [ ] Short demonstration video and its link
-- [ ] GitHub repository publication
+- [x] Short demonstration video and its link: https://www.youtube.com/watch?v=_DnmhyPsTmE
+- [x] GitHub repository publication: https://github.com/derebagtibet/se4458-tuition-assistant

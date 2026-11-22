@@ -17,7 +17,7 @@
 | [agent/](agent/) | Complete JSON tool selections, inputs, results and final answers for the three live read scenarios and the confirmed payment (`20261121-161102-86d423.json`) |
 | [agent-live-attempt.log](agent-live-attempt.log) | Historical failed attempt (HTTP 402), resolved after funding the project; retained as troubleshooting history |
 
-Still needed: the demo video and GitHub publication. The live agent payment confirmation is recorded above; the three read scenarios made no payment calls.
+Demo video: https://www.youtube.com/watch?v=_DnmhyPsTmE. The live agent payment confirmation is recorded above; the three read scenarios made no payment calls.
 
 Reproduce from the project root after installing dependencies:
 

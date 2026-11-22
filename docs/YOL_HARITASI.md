@@ -12,7 +12,8 @@
 | Eklendi | LLM maliyeti: ölçülen token sayıları ve USD hesabı README §7'de (3 senaryo toplam ≈ 0,009 USD) |
 | Doğrulandı | Öğrenci onaylı agent ödemesi: `yes` → Kong üzerinden Pay API → `SUCCESS`, 2026-FALL 3000 → 2500 USD (`docs/evidence/agent-payment-confirmed.log`) |
 | Doğrulandı | Azure deploy: Kong, MCP, Tuition API (internal) Sweden Central'da, PostgreSQL West Europe'ta. URL'ler README §9'da. Bulutta gateway demo PASSED, 3 MCP sorgusu ve agent demosu (onaylı ödeme dahil) `docs/evidence/cloud-*.log` içinde |
-| Eksik | Kısa video ve bağlantısı, GitHub repo yayını |
+| Doğrulandı | GitHub: https://github.com/derebagtibet/se4458-tuition-assistant (public, gizli dosya yok; testler GitHub kopyasında 82/82 geçti) |
+| Doğrulandı | Demo videosu: https://www.youtube.com/watch?v=_DnmhyPsTmE (README başlığında ve §12'de) |
 
 Bu kontrolde CSV'deki NaN/Infinity ve kolon/sözdizimi hataları, agent'ın ödeme tutarını sessizce yuvarlaması, geçersiz dönemle ödeme denemesi, duplicate işlem hatasında başka öğrenci bilgisinin açığa çıkması ve Windows UTF-8/geçici klasör sorunları düzeltildi. Yerel `.env` içindeki örnek JWT sırrı rastgele bir değerle değiştirildi. CLI `.env` ve `MCP_HOST_PORT` ayarlarını okuyor; sağlayıcı hatalarını anlaşılır mesajla gösteriyor. Güncel kanıtlar `docs/evidence/` içinde.
 
@@ -70,7 +71,7 @@ README'de ad ve öğrenci numarası zaten doldurulmuş. `agent-mcp-only.log`, `a
 Kısa bir video çek: mimari diyagramı → gateway demo → agent demo → testlerin çalışması. README §12'deki checklist'i işaretle.
 
 ## 4. GitHub
-Bu klasörde henüz `.git` bulunmuyor. Yeni bir repo aç, push et ve repo linkini hocanın istediği yöntemle teslim et. `.env` dosyasını **commit etme** (`.gitignore` içinde zaten var). Gerçek anahtarları, JWT'leri ve `deploy/azure/.deploy-state` dosyasını repoya ekleme.
+Repo yayında: https://github.com/derebagtibet/se4458-tuition-assistant. Değişikliklerden sonra `git add -A && git commit -m "..." && git push`. Repo linkini hocanın istediği yöntemle teslim et. `.env` dosyasını **commit etme** (`.gitignore` içinde zaten var). Gerçek anahtarları, JWT'leri ve `deploy/azure/.deploy-state` dosyasını repoya ekleme.
 
 ## Videoda anlatman gerekenler (sorulabilir)
 - **LLM tool seçimi** keyword routing ile değil, Gemini function calling ile yapılıyor (`agent.py` → `TOOLS`). Araçları agent çalıştırıyor, çünkü `automatic_function_calling` kapalı.

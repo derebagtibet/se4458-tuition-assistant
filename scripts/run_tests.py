@@ -19,7 +19,7 @@ SUITES = ("services/tuition_api", "services/mcp_server", "agent")
 def main() -> int:
     if hasattr(sys.stdout, "reconfigure"):
         sys.stdout.reconfigure(encoding="utf-8")
-    log_path = ROOT / "docs/evidence/unit-tests.log"
+    log_path = ROOT / os.getenv("TEST_LOG", "docs/evidence/unit-tests.log")
     log_path.parent.mkdir(parents=True, exist_ok=True)
     temp_root = ROOT / ".test-tmp"
     temp_root.mkdir(exist_ok=True)
